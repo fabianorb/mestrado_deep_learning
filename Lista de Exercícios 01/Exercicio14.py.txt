@@ -1,0 +1,77 @@
+#comente
+import numpy as np
+import tensorflow as tf
+
+#comente
+sess = tf.Session()
+
+#comente
+def print_tf(x):
+    print("TIPO: \n %s" % (type(x)))
+    print("Valor: \n %s" % (x))
+hello = tf.constant("www.deeplearningbrasil.com.br")
+print_tf(hello)
+
+#comente
+hello_out = sess.run(hello)
+print_tf(hello_out)
+
+#comente
+a = tf.constant(1.5)
+b = tf.constant(2.5)
+print_tf(a)
+print_tf(b)
+
+#comente
+a_out = sess.run(a)
+b_out = sess.run(b)
+print_tf(a_out)
+print_tf(b_out)
+
+#comente
+a_plus_b = tf.add(a, b)
+print_tf(a_plus_b)
+
+#comente
+a_plus_b_out = sess.run(a_plus_b)
+print_tf(a_plus_b_out)
+
+#comente
+a_mul_b = tf.mul(a, b)
+a_mul_b_out = sess.run(a_mul_b)
+print_tf(a_mul_b_out)
+
+#comente
+weight = tf.Variable(tf.random_normal([5, 2], stddev=0.1))
+print_tf(weight)
+
+#comente - acontecerá um erro aqui
+weight_out = sess.run(weight)
+print_tf(weight_out)
+
+#comente
+init = tf.initialize_all_variables()
+sess.run(init)
+
+#comente
+weight_out = sess.run(weight)
+print_tf(weight_out)
+print ("INITIALIZING ALL VARIALBES")
+
+#comente
+x = tf.placeholder(tf.float32, [None, 5])
+print_tf(x)
+
+#comente
+oper = tf.matmul(x, weight)
+print_tf(oper)
+
+#comente
+data = np.random.rand(1, 5)
+oper_out = sess.run(oper, feed_dict={x: data})
+print_tf(oper_out)
+
+#comente
+data = np.random.rand(2, 5)
+oper_out = sess.run(oper, feed_dict={x: data})
+print_tf(oper_out)
